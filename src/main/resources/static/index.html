@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack - Academic Performance & CGPA Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">E</div>
+            <div>
+                <div class="brand-title">EduTrack</div>
+                <div class="brand-subtitle">Academic System</div>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-view="dashboard">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </li>
+            <li class="nav-item" data-view="students">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                Students
+            </li>
+            <li class="nav-item" data-view="subjects">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                Subjects
+            </li>
+            <li class="nav-item" data-view="semesters">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                Semesters
+            </li>
+            <li class="nav-item" data-view="performance">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                Performance
+            </li>
+            <li class="nav-item" data-view="summary">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                Academic Reports
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper">
+        <!-- Top Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="pageSubTitle">Overview of institutional academic performance and records</p>
+            </div>
+            <div class="header-badge">Spring Boot Backend Connected</div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="content-area">
+
+            <!-- 1. DASHBOARD VIEW -->
+            <section id="view-dashboard" class="view-section active">
+                <div class="metrics-grid">
+                    <div class="card metric-card">
+                        <div class="metric-info">
+                            <h3>Total Students</h3>
+                            <div class="metric-value" id="dashTotalStudents">0</div>
+                        </div>
+                        <div class="metric-icon-bg">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-info">
+                            <h3>Total Subjects</h3>
+                            <div class="metric-value" id="dashTotalSubjects">0</div>
+                        </div>
+                        <div class="metric-icon-bg">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-info">
+                            <h3>Active Semesters</h3>
+                            <div class="metric-value" id="dashTotalSemesters">0</div>
+                        </div>
+                        <div class="metric-icon-bg">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-info">
+                            <h3>Institutional Avg CGPA</h3>
+                            <div class="metric-value" id="dashAvgCgpa">0.00</div>
+                        </div>
+                        <div class="metric-icon-bg">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <div class="section-title">Recent Performance Entries</div>
+                    <button class="btn btn-primary btn-sm" onclick="switchView('performance')">+ Record Marks</button>
+                </div>
+
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Register No</th>
+                                    <th>Student Name</th>
+                                    <th>Subject</th>
+                                    <th>Semester</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
+                                    <th>Grade Point</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashRecentPerformanceBody">
+                                <tr><td colspan="7" class="empty-state">Loading recent records...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. STUDENTS VIEW -->
+            <section id="view-students" class="view-section">
+                <div class="section-header">
+                    <div class="section-title">Student Directory</div>
+                    <button class="btn btn-primary" onclick="openStudentModal()">+ Add New Student</button>
+                </div>
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Register Number</th>
+                                    <th>Student Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Batch</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTableBody">
+                                <tr><td colspan="6" class="empty-state">Loading students...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. SUBJECTS VIEW -->
+            <section id="view-subjects" class="view-section">
+                <div class="section-header">
+                    <div class="section-title">Subject Management</div>
+                    <button class="btn btn-primary" onclick="openSubjectModal()">+ Add New Subject</button>
+                </div>
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Credits</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjectsTableBody">
+                                <tr><td colspan="4" class="empty-state">Loading subjects...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. SEMESTERS VIEW -->
+            <section id="view-semesters" class="view-section">
+                <div class="section-header">
+                    <div class="section-title">Semester Management</div>
+                    <button class="btn btn-primary" onclick="openSemesterModal()">+ Add New Semester</button>
+                </div>
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Semester Number</th>
+                                    <th>Academic Year</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="semestersTableBody">
+                                <tr><td colspan="3" class="empty-state">Loading semesters...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. PERFORMANCE VIEW -->
+            <section id="view-performance" class="view-section">
+                <div class="card" style="margin-bottom: 28px;">
+                    <div class="section-title" style="margin-bottom: 16px;">Record Academic Performance</div>
+                    <form id="performanceForm" onsubmit="handlePerformanceSubmit(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Select Student *</label>
+                                <select id="perfStudentSelect" class="form-control" required>
+                                    <option value="">-- Choose Student --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Select Subject *</label>
+                                <select id="perfSubjectSelect" class="form-control" required>
+                                    <option value="">-- Choose Subject --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Select Semester *</label>
+                                <select id="perfSemesterSelect" class="form-control" required>
+                                    <option value="">-- Choose Semester --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Marks Obtained (0 - 100) *</label>
+                                <input type="number" id="perfMarks" class="form-control" min="0" max="100" step="0.5" placeholder="e.g. 85.5" required oninput="previewGradeCalculation()">
+                            </div>
+                        </div>
+
+                        <!-- Realtime Backend Grade Calculation Preview -->
+                        <div id="gradePreviewBox" style="display:none; background-color: var(--emerald-50); border: 1px solid var(--emerald-100); border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; color: var(--emerald-900);">
+                            Calculated Grade: <strong id="previewGradeCode">-</strong> | Grade Point: <strong id="previewGradePoint">-</strong>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Marks Record</button>
+                    </form>
+                </div>
+
+                <div class="section-header">
+                    <div class="section-title">All Performance Records</div>
+                </div>
+
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Register No</th>
+                                    <th>Student Name</th>
+                                    <th>Subject</th>
+                                    <th>Credits</th>
+                                    <th>Semester</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
+                                    <th>Grade Point</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="performanceTableBody">
+                                <tr><td colspan="9" class="empty-state">Loading performance records...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. STUDENT ACADEMIC SUMMARY & REPORT VIEW -->
+            <section id="view-summary" class="view-section">
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Select Student to Generate Academic Transcript</label>
+                        <select id="summaryStudentSelect" class="form-control" onchange="loadStudentAcademicSummary(this.value)">
+                            <option value="">-- Select a Student --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="summaryReportContainer" style="display:none;">
+                    <!-- Student Header Card -->
+                    <div class="summary-header-card">
+                        <div class="summary-profile">
+                            <h2 id="sumStudentName">Student Name</h2>
+                            <p id="sumStudentMeta">Reg: - | Dept: - | Batch: -</p>
+                        </div>
+                        <div class="summary-stats">
+                            <div class="stat-box">
+                                <div class="label">Total Credits</div>
+                                <div class="value" id="sumTotalCredits">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="label">Overall CGPA</div>
+                                <div class="value" id="sumCgpa">0.00</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="label">Academic Status</div>
+                                <div class="value" style="font-size: 18px; margin-top: 4px;">
+                                    <span id="sumAcademicStatusBadge" class="badge">Status</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semester-wise Breakdown List -->
+                    <div id="semesterBreakdownList">
+                        <!-- Dynamic semester tables will be injected here -->
+                    </div>
+                </div>
+
+                <div id="summarySelectPlaceholder" class="empty-state card">
+                    Please select a student above to view their detailed semester-wise GPA and overall CGPA calculation summary.
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- STUDENT MODAL -->
+    <div id="studentModal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="studentModalTitle">Add Student</div>
+                <button class="modal-close" onclick="closeStudentModal()">&times;</button>
+            </div>
+            <form id="studentForm" onsubmit="handleStudentSubmit(event)">
+                <input type="hidden" id="studentId">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Register Number *</label>
+                        <input type="text" id="studentRegisterNumber" class="form-control" placeholder="e.g. 21CS101" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Student Name *</label>
+                        <input type="text" id="studentName" class="form-control" placeholder="e.g. Aarav Sharma" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" id="studentEmail" class="form-control" placeholder="aarav@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Department *</label>
+                        <input type="text" id="studentDepartment" class="form-control" placeholder="e.g. Computer Science" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Batch / Academic Year *</label>
+                        <input type="text" id="studentBatch" class="form-control" placeholder="e.g. 2021-2025" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeStudentModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUBJECT MODAL -->
+    <div id="subjectModal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="subjectModalTitle">Add Subject</div>
+                <button class="modal-close" onclick="closeSubjectModal()">&times;</button>
+            </div>
+            <form id="subjectForm" onsubmit="handleSubjectSubmit(event)">
+                <input type="hidden" id="subjectId">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Subject Code *</label>
+                        <input type="text" id="subjectCode" class="form-control" placeholder="e.g. CS301" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject Name *</label>
+                        <input type="text" id="subjectName" class="form-control" placeholder="e.g. Data Structures & Algorithms" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Credits *</label>
+                        <input type="number" id="subjectCredits" class="form-control" min="1" max="10" placeholder="e.g. 4" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeSubjectModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SEMESTER MODAL -->
+    <div id="semesterModal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="semesterModalTitle">Add Semester</div>
+                <button class="modal-close" onclick="closeSemesterModal()">&times;</button>
+            </div>
+            <form id="semesterForm" onsubmit="handleSemesterSubmit(event)">
+                <input type="hidden" id="semesterId">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Semester Number *</label>
+                        <input type="number" id="semesterNumber" class="form-control" min="1" max="8" placeholder="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Academic Year *</label>
+                        <input type="text" id="semesterAcademicYear" class="form-control" placeholder="e.g. 2024-2025" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeSemesterModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Semester</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
