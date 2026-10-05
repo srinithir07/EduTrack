@@ -150,25 +150,5 @@ Open Command Prompt / PowerShell in the project root directory:
 3. The collection contains pre-configured requests with JSON body templates for testing all CRUD endpoints and academic calculation APIs.
 
 ---
-
-## Viva Voce Questions & Technical Concepts Demonstrated
-
-### 1. What is Spring Boot and why was it chosen?
-Spring Boot simplifies Spring application development by providing embedded Tomcat servers, auto-configuration, and starter dependencies without requiring complex XML configurations.
-
-### 2. What is a DTO (Data Transfer Object) and why is it used?
-A DTO decouples the database entity model from the API presentation layer. It prevents over-exposing internal database structures and allows request input validation using annotations (`@NotBlank`, `@Min`, `@Max`).
-
-### 3. What is Dependency Injection and Constructor Injection?
-Dependency Injection (DI) allows Spring to manage component lifecycles. We use **Constructor Injection** (`private final Repository repository`) because it promotes immutability, avoids reflection overhead, and makes unit testing easier without needing `@Autowired`.
-
-### 4. How are Java 21 Streams and Collectors used in this project?
-In `AcademicCalculationService.java`, Java 8+ Stream API (`stream()`, `mapToInt()`, `mapToDouble()`, `Collectors.groupingBy()`) is used to group student performance records by semester and calculate weighted credit points efficiently.
-
-### 5. What is `@ControllerAdvice` and `@ExceptionHandler`?
-`GlobalExceptionHandler.java` uses `@ControllerAdvice` to intercept exceptions thrown across all controllers globally and format clean, uniform JSON error responses (`ErrorResponse`).
-
----
-
 ## License & Author
 Academic Project - Built for Academic Viva & Evaluation Demonstration.
